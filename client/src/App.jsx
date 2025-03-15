@@ -1,4 +1,4 @@
-import { useState } from 'react'
+/* import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -30,6 +30,50 @@ function App() {
       </p>
     </>
   )
+} */
+
+import "./App.css";
+import PropsExample from "./concepts/Props";
+import ReactChildren from "./concepts/ChildrenExample";
+import JavaScriptExpression from "./concepts/JavaScriptExpression";
+import ReactFragment from "./concepts/ReactFragment";
+import ComponentUsingArrowFunction from "./concepts/ComponentUsingArrowFunction";
+import ArrayComponent from "./concepts/ArrayComponent";
+import ConditionalRendering from "./concepts/ConditionalRendering";
+import CustomElement from "./concepts/CustomElement";
+
+function App() {
+  return (
+    <div>
+      <h1>Hello there!</h1>
+      <PropsExample title="Props" />
+
+      <ReactChildren count="1">
+        I will render as a children and i am just a text
+      </ReactChildren>
+
+      <ReactChildren count="2">
+        <div>Children Example using JSX syntax</div>
+      </ReactChildren>
+
+      <JavaScriptExpression />
+
+      <ReactFragment />
+
+      <ComponentUsingArrowFunction />
+
+      <ArrayComponent />
+
+      <h2>Conditional Rendering</h2>
+      <ConditionalRendering />
+      <ConditionalRendering />
+
+      <CustomElement CustomTag="button" />
+      <CustomElement CustomTag="span" />
+      <CustomElement CustomTag="p" />
+      {/* <CustomElement CustomTag={ArrayComponent} /> */}
+    </div>
+  );
 }
 
-export default App
+export default App;
