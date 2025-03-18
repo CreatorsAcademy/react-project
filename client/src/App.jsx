@@ -41,6 +41,10 @@ import ComponentUsingArrowFunction from "./concepts/ComponentUsingArrowFunction"
 import ArrayComponent from "./concepts/ArrayComponent";
 import ConditionalRendering from "./concepts/ConditionalRendering";
 import CustomElement from "./concepts/CustomElement";
+/* import EventHandlers from "./concepts/EventHandlers";
+import InlineStyleExample from "./concepts/InlineStyles";
+import StylesUsingCSSModules from "./concepts/StylesUsingCSSModules"; */
+import FormWithStyledComponents from "./concepts/FormWithStyledComponents";
 
 function App() {
   return (
@@ -72,6 +76,11 @@ function App() {
       <CustomElement CustomTag="span" />
       <CustomElement CustomTag="p" />
       {/* <CustomElement CustomTag={ArrayComponent} /> */}
+
+      {/* <EventHandlers /> */}
+      {/* <InlineStyleExample />
+      <StylesUsingCSSModules /> */}
+      <FormWithStyledComponents />
     </div>
   );
 }
