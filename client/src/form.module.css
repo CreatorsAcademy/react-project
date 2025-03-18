@@ -1,0 +1,20 @@
+.form {
+    border: 1px solid;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.field-container {
+    padding-block: 10px;
+}
+
+.button {
+    padding: 6px;
+    background: #80CBC4;
+    border: none;
+    border-radius: 6px;
+}
+
+.action-buttons button{
+    margin: 6px;
+}
