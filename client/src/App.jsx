@@ -49,7 +49,7 @@ import FormWithStyledComponents from "./concepts/FormWithStyledComponents";
 function App() {
   return (
     <div>
-      <h1>Hello there!</h1>
+      {/* <h1>Hello there!</h1>
       <PropsExample title="Props" />
 
       <ReactChildren count="1">
@@ -74,7 +74,7 @@ function App() {
 
       <CustomElement CustomTag="button" />
       <CustomElement CustomTag="span" />
-      <CustomElement CustomTag="p" />
+      <CustomElement CustomTag="p" /> */}
       {/* <CustomElement CustomTag={ArrayComponent} /> */}
 
       {/* <EventHandlers /> */}
