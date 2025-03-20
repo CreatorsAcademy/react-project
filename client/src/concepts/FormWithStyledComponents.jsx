@@ -1,4 +1,5 @@
 import { styled } from "styled-components";
+import Field from "./Field";
 
 const FormContainer = styled.form`
   border: 1px solid;
@@ -8,19 +9,28 @@ const FormContainer = styled.form`
 
 const FieldContainer = styled.div`
   padding-block: 10px;
+
+  label {
+    font-weight: 600;
+  }
 `;
 
 const Button = styled.button`
   padding: 6px;
-  background: #80cbc4;
+  background: ${(props) => (props.nobgColor ? "transparent" : "#80cbc4")};
   border: none;
   border-radius: 6px;
   margin: 6px;
 `;
 
+const RedButton = styled(Button)`
+  background: red;
+`;
+
 export default function FormWithStyledComponents() {
   return (
     <FormContainer
+      className="form-container"
       onSubmit={(event) => {
         event.preventDefault();
       }}
@@ -33,10 +43,17 @@ export default function FormWithStyledComponents() {
         <label htmlFor="lastname">Last Name </label>
         <input type="text" name="lastname" />
       </FieldContainer>
+      <Field name="place" label="Place" />
       <div className="action-buttons">
-        <Button type="button">Save Details</Button>
+        <RedButton nobgColor={true} type="button">
+          Save Details
+        </RedButton>
         <Button>Submit</Button>
       </div>
     </FormContainer>
   );
 }
+
+/* function Button(props) {
+  props.nobgColor;
+} */
