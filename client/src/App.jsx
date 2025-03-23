@@ -32,8 +32,13 @@ function App() {
   )
 } */
 
+/* import { useState } from "react"; */
 import "./App.css";
-import StateExample from "./ReactHooks/StateExampleHook";
+import ResponsiveAppBar from "./components/AppBar";
+import SimpleContainer from "./components/Container";
+/* import Counter from "./components/Counter"; */
+/* import EffectHook from "./ReactHooks/EffectHook"; */
+/* import StateExample from "./ReactHooks/StateExampleHook"; */
 /* import PropsExample from "./concepts/Props";
 import ReactChildren from "./concepts/ChildrenExample";
 import JavaScriptExpression from "./concepts/JavaScriptExpression";
@@ -48,6 +53,8 @@ import StylesUsingCSSModules from "./concepts/StylesUsingCSSModules";
 import FormWithStyledComponents from "./concepts/FormWithStyledComponents"; */
 
 function App() {
+  /* const [data, setData] = useState(0); */
+
   return (
     <div>
       {/* <h1>Hello there!</h1>
@@ -82,7 +89,11 @@ function App() {
       {/* <InlineStyleExample />
       <StylesUsingCSSModules /> */}
       {/* <FormWithStyledComponents /> */}
-      <StateExample />
+      {/* <StateExample /> */}
+      {/* <Counter /> */}
+      {/* <EffectHook data={data} setData={setData} /> */}
+      <ResponsiveAppBar />
+      <SimpleContainer />
     </div>
   );
 }
