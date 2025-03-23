@@ -34,8 +34,9 @@ function App() {
 
 /* import { useState } from "react"; */
 import "./App.css";
-import ResponsiveAppBar from "./components/AppBar";
-import SimpleContainer from "./components/Container";
+import ContextAPIExample from "./ReactHooks/ContextAPIExample";
+/* import ResponsiveAppBar from "./components/AppBar";
+import SimpleContainer from "./components/Container"; */
 /* import Counter from "./components/Counter"; */
 /* import EffectHook from "./ReactHooks/EffectHook"; */
 /* import StateExample from "./ReactHooks/StateExampleHook"; */
@@ -54,6 +55,7 @@ import FormWithStyledComponents from "./concepts/FormWithStyledComponents"; */
 
 function App() {
   /* const [data, setData] = useState(0); */
+  console.log("APp component");
 
   return (
     <div>
@@ -92,8 +94,9 @@ function App() {
       {/* <StateExample /> */}
       {/* <Counter /> */}
       {/* <EffectHook data={data} setData={setData} /> */}
-      <ResponsiveAppBar />
-      <SimpleContainer />
+      {/* <ResponsiveAppBar />
+      <SimpleContainer /> */}
+      <ContextAPIExample />
     </div>
   );
 }
