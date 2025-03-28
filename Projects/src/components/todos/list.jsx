@@ -1,3 +1,4 @@
+import * as React from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -5,11 +6,12 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
-import CommentIcon from "@mui/icons-material/Comment";
-import * as React from "react";
+import DeleteIcon from "@mui/icons-material/Delete";
+import Sample from "./index";
 
-function TodoList({ value1 }) {
+export default function CheckboxList({ value1, onDelete }) {
   const [checked, setChecked] = React.useState([0]);
+
   const handleToggle = (value) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
@@ -22,17 +24,22 @@ function TodoList({ value1 }) {
 
     setChecked(newChecked);
   };
+
   return (
     <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-      {value1.map((value) => {
+      {value1.map((value, index) => {
         const labelId = `checkbox-list-label-${value}`;
 
         return (
           <ListItem
             key={value}
             secondaryAction={
-              <IconButton edge="end" aria-label="comments">
-                <CommentIcon />
+              <IconButton edge="end" aria-label="delete">
+                <DeleteIcon
+                  onClick={() => {
+                    onDelete(index);
+                  }}
+                />
               </IconButton>
             }
             disablePadding
@@ -51,7 +58,7 @@ function TodoList({ value1 }) {
                   inputProps={{ "aria-labelledby": labelId }}
                 />
               </ListItemIcon>
-              <ListItemText id={labelId} primary={`Line item ${value + 1}`} />
+              <ListItemText id={labelId} primary={`${value}`} />
             </ListItemButton>
           </ListItem>
         );
@@ -59,5 +66,3 @@ function TodoList({ value1 }) {
     </List>
   );
 }
-
-export default TodoList;
