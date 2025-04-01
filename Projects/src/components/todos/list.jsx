@@ -7,24 +7,15 @@ import ListItemText from "@mui/material/ListItemText";
 import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Sample from "./index";
+import Todo from "./index";
 
-export default function CheckboxList({ value1, onDelete }) {
-  const [checked, setChecked] = React.useState([0]);
-
-  const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
-
-    if (currentIndex === -1) {
-      newChecked.push(value);
-    } else {
-      newChecked.splice(currentIndex, 1);
-    }
-
-    setChecked(newChecked);
-  };
-
+export default function TodoList({
+  value1,
+  onDelete,
+  checkedItems,
+  onToggle,
+  showDelete = true,
+}) {
   return (
     <List sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
       {value1.map((value, index) => {
@@ -34,25 +25,27 @@ export default function CheckboxList({ value1, onDelete }) {
           <ListItem
             key={value}
             secondaryAction={
-              <IconButton edge="end" aria-label="delete">
-                <DeleteIcon
-                  onClick={() => {
-                    onDelete(index);
-                  }}
-                />
-              </IconButton>
+              showDelete && (
+                <IconButton edge="end" aria-label="delete">
+                  <DeleteIcon
+                    onClick={() => {
+                      onDelete(index);
+                    }}
+                  />
+                </IconButton>
+              )
             }
             disablePadding
           >
             <ListItemButton
               role={undefined}
-              onClick={handleToggle(value)}
+              onClick={() => onToggle(value)}
               dense
             >
               <ListItemIcon>
                 <Checkbox
                   edge="start"
-                  checked={checked.includes(value)}
+                  checked={checkedItems.includes(value)}
                   tabIndex={-1}
                   disableRipple
                   inputProps={{ "aria-labelledby": labelId }}
