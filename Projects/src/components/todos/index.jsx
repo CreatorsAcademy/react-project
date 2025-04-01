@@ -2,12 +2,12 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import CheckboxList from "./list";
+import TodoList from "./list";
 import { useState } from "react";
 import Stack from "@mui/material/Stack";
 import { useEffect } from "react";
 
-function Sample() {
+function Todo() {
   const [name, setName] = useState("");
   const [todo, setTodo] = useState(() => {
     const savedTodo = localStorage.getItem("todo");
@@ -16,9 +16,24 @@ function Sample() {
 
   const [search, setSearch] = useState("");
 
+  const [checkedItems, setCheckedItems] = useState(() => {
+    const savedChecked = localStorage.getItem("checkedItems");
+    return savedChecked ? JSON.parse(savedChecked) : [];
+  });
+
   useEffect(() => {
     localStorage.setItem("todo", JSON.stringify(todo));
-  }, [todo]);
+    localStorage.setItem("checkedItems", JSON.stringify(checkedItems));
+  }, [todo, checkedItems]);
+
+  function handleCheckboxToggle(value) {
+    setCheckedItems((prev) => {
+      const isChecked = prev.includes(value);
+      return isChecked
+        ? prev.filter((item) => item !== value)
+        : [...prev, value];
+    });
+  }
 
   function myFunction(e) {
     setName(e.target.value);
@@ -29,8 +44,8 @@ function Sample() {
   }
 
   function clickBtn() {
-    setTodo((p) => {
-      return [...p, name];
+    setTodo((prevValue) => {
+      return [...prevValue, name];
     });
     setName("");
   }
@@ -60,7 +75,12 @@ function Sample() {
           Add
         </Button>
       </Stack>
-      <CheckboxList value1={todo} onDelete={handleDelete} />
+      <TodoList
+        value1={todo}
+        onDelete={handleDelete}
+        checkedItems={checkedItems}
+        onToggle={handleCheckboxToggle}
+      />
       <Typography variant="h4">Search</Typography>
       <Box sx={{ width: "75%" }}>
         <TextField
@@ -71,9 +91,14 @@ function Sample() {
           onChange={handleSearchInput}
         />
       </Box>
-      <CheckboxList value1={filteredTodos} onDelete={handleDelete} />
+      <TodoList
+        value1={filteredTodos}
+        checkedItems={checkedItems}
+        onToggle={handleCheckboxToggle}
+        showDelete={false}
+      />
     </>
   );
 }
 
-export default Sample;
+export default Todo;
